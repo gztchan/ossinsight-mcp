@@ -1,0 +1,40 @@
+{
+  "name": "ossinsight-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for OSS Insight public API",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "ossinsight-mcp": "./dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "pnpm typecheck && esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --sourcemap --banner:js='#!/usr/bin/env node' && chmod +x dist/index.js",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "ossinsight",
+    "api"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@cfworker/json-schema": "^4.1.1",
+    "@modelcontextprotocol/server": "^2.0.0-alpha.2",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "esbuild": "^0.27.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
